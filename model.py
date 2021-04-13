@@ -20,8 +20,9 @@ class Encoder(nn.Module):
         self.input_dim = input_dim
         self.n_layers = n_layers
         self.dropout = dropout
-
+        
         self.embedding = nn.Embedding(input_dim, emb_dim)
+
         self.rnn = nn.GRU(emb_dim, enc_hid_dim, n_layers, dropout=dropout,
                           bidirectional=True)
         self.fc = nn.Linear(enc_hid_dim * 2, dec_hid_dim)

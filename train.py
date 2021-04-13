@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
     train_iterator, valid_iterator, test_iterator = BucketIterator.splits((train_data, valid_data, test_data), batch_size=config.BATCH_SIZE, device=config.device)
 
-    N_EPOCHS = 1
+    N_EPOCHS = 10
     best_valid_loss = float('inf')
 
     for epoch in range(N_EPOCHS):
@@ -102,8 +102,8 @@ if __name__ == "__main__":
 
     test_loss = evaluate(seq2seq, test_iterator, criterion)
     print(f'| Test Loss: {test_loss:.3f} | Test PPL: {math.exp(test_loss):7.3f} |')
-    # print("Bleu Score is :")
-    # print(bleu(test_data, seq2seq, config.source, config.target, config.device))
+    print("Bleu Score is :")
+    print(bleu(test_data, seq2seq, config.source, config.target, config.device))
     example_idx = 0
     example = train_data.examples[example_idx]
     print('source sentence: ', ' '.join(example.src))

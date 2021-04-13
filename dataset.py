@@ -55,8 +55,8 @@ class Dataset():
         
         
 
-        source.build_vocab(train_data, min_freq=2)
-        target.build_vocab(train_data, min_freq=2)
+        source.build_vocab(train_data, min_freq=2, vectors='fasttext.simple.300d')
+        target.build_vocab(train_data, min_freq=2, vectors='fasttext.simple.300d')
         print(f"Unique tokens in source (de) vocabulary: {len(source.vocab)}")
         print(f"Unique tokens in target (en) vocabulary: {len(target.vocab)}")
 
